@@ -1,6 +1,4 @@
-from flask import Flask;
 from flask import Flask, jsonify, request
-import sklearn  # Replace with the library you used to train your model
 import pickle
 
 app = Flask(__name__)
