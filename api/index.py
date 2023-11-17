@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 import pickle
 import numpy as np
 
@@ -7,6 +7,10 @@ app = Flask(__name__)
 # Load your pre-trained model
 model = pickle.load(open('./nba-result-ml.pkl'))
 
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    
 @app.route('/')
 def hello_world():
     return 'This is the NBA Result Prediction API!'
