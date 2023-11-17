@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 # Load your pre-trained model
 #model = pickle.load(open('nba-result-ml.pkl', 'rb'))
-model = piclke.load(send_from_directory(os.path.join(app.root_path, 'static'), 'nba-result-ml.pkl'))
+with open('nba-result-pkl', 'rb') as f:
+    model = pickle.load(f)
+#model = piclke.load(send_from_directory(os.path.join(app.root_path, 'static'), 'nba-result-ml.pkl'))
 @app.route('/favicon.ico') 
 def favicon(): 
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
