@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
 import pickle
+import numpy as np
 
 app = Flask(__name__)
 
 # Load your pre-trained model
-model = pickle.load('./nba-result-ml.sav')
+model = pickle.load(open('./nba-result-ml.pkl'))
 
 @app.route('/')
 def hello_world():
@@ -17,10 +18,10 @@ def predict():
         data = request.get_json()
 
         # Make predictions using your model
-        result = model.predict(data['input'])
-
+        result = model.predict([[np.array(data['input'])]])
+        output = result[0]
         # Return the predictions as JSON
-        return jsonify({'result': result.tolist()})
+        return jsonify({'result': output})
 
     except Exception as e:
         return jsonify({'error': str(e)})
