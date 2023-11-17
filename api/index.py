@@ -32,7 +32,7 @@ def predict():
         # Get input data from the request
         data = request.get_json()
          # Make predictions using your model
-        result = model.predict(np.array(data["input"]))
+        result = model.predict([np.array(data["input"])])
         output = result[0]
         # Return the predictions as JSON
         return jsonify({'result': output})
