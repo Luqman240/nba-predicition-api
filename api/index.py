@@ -33,8 +33,9 @@ def predict():
         data = request.get_json()
          # Make predictions using your model
         result = model.predict([np.array(data["input"])])
+        output = int(result[0])
         # Return the predictions as JSON
-        return jsonify({'result': map(int,result)})
+        return jsonify({'result': output})
        
     except Exception as e:
         return jsonify({'error': str(e)})
