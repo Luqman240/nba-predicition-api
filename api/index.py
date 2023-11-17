@@ -1,12 +1,18 @@
 from flask import Flask, jsonify, request, send_from_directory
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 # Load your pre-trained model
 #model = pickle.load(open('nba-result-ml.pkl', 'rb'))
-with open('nba-result-ml.pkl', 'rb') as f:
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the file
+file_path = os.path.join(current_directory, 'nba-result-ml.pkl')
+
+with open(file_path, 'rb') as f:
     model = pickle.load(f)
     
 @app.route('/favicon.ico') 
