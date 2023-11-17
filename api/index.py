@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Load your pre-trained model
 #model = pickle.load(open('nba-result-ml.pkl', 'rb'))
-with open('nba-result-pkl', 'rb') as f:
+with open('nba-result-ml.pkl', 'rb') as f:
     model = pickle.load(f)
     
 @app.route('/favicon.ico') 
