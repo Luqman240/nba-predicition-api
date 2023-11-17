@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 import pickle
 import numpy as np
 import os
@@ -6,7 +7,7 @@ import os
 
 
 app = Flask(__name__)
-
+CORS(app)
 # Load your pre-trained model
 #model = pickle.load(open('nba-result-ml.pkl', 'rb'))
 current_directory = os.path.dirname(os.path.abspath(__file__))
