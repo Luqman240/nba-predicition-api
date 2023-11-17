@@ -31,7 +31,7 @@ def predict():
     try:
         # Get input data from the request
         data = request.get_json()
-        return jsonify({'shape':np.array(data["input"].shape()})
+        return jsonify({'shape':np.array(data["input"].shape())})
        
     except Exception as e:
         return jsonify({'error': str(e)})
