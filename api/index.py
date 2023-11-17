@@ -33,7 +33,7 @@ def predict():
         data = request.get_json()
          # Make predictions using your model
         result = model.predict([np.array(data["input"])])
-        output = int(result[0])
+        output = map(int,result)
         # Return the predictions as JSON
         return jsonify({'result': output})
        
