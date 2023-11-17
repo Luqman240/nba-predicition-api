@@ -31,13 +31,8 @@ def predict():
     try:
         # Get input data from the request
         data = request.get_json()
-
-        # Make predictions using your model
-        result = model.predict(data['input'])
-        output = result[0]
-        # Return the predictions as JSON
-        return jsonify({'result': output})
-
+        return jsonify({'shape':np.array(data["input"].shape()})
+       
     except Exception as e:
         return jsonify({'error': str(e)})
 
